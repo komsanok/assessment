@@ -7,6 +7,6 @@ import java.util.List;
 @Data
 public class UserTicketAllReponseDto {
     private List<String> Ticket;
-    private int Count;
-    private float Cost;
+    private Long Count;
+    private double Cost;
 }
