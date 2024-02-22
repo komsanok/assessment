@@ -1,24 +1,22 @@
 package com.kbtg.bootcamp.posttest.controllers;
 
+import com.kbtg.bootcamp.posttest.dto.response.UserBuyLotteryReponseDto;
+import com.kbtg.bootcamp.posttest.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
 public class userController {
-    @GetMapping
-    public String getAllUser() {
-        return "getAllUser";
-    }
+
+    @Autowired
+    UserService userService;
 
     @PostMapping("/{userId}/lotteries/{ticketId}")
-    public void userBuyLottery(@PathVariable("userId") String userId, @PathVariable("ticketId") String ticketId) {
+    public UserBuyLotteryReponseDto BuyLottery(@PathVariable("userId") String userId, @PathVariable("ticketId") String ticketId) {
 
-        System.out.println(userId);
+        return userService.BuyLottery(userId,ticketId);
     }
 
-    @PostMapping("/{userId}/lotteries")
-    public void getLotteryById(@PathVariable("userId")String userId){
-
-    }
 }
 

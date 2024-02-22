@@ -22,17 +22,17 @@ public class ApiExceptionHandler {
     public ResponseEntity<Object> handleNotFoundException(NotFoundException e) {
         ApiErrorResponse errorResponse = new ApiErrorResponse();
         errorResponse.setMessage(e.getMessage());
-        errorResponse.setHttpStatus(HttpStatus.NOT_FOUND);
+        errorResponse.setHttpStatus(HttpStatus.BAD_REQUEST);
         errorResponse.setDateTime(ZonedDateTime.now());
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler({ DataDuplicateException.class })
     public ResponseEntity<Object> handleDataDuplicateException(DataDuplicateException e) {
         ApiErrorResponse errorResponse = new ApiErrorResponse();
         errorResponse.setMessage(e.getMessage());
-        errorResponse.setHttpStatus(HttpStatus.CONFLICT);
+        errorResponse.setHttpStatus(HttpStatus.BAD_REQUEST);
         errorResponse.setDateTime(ZonedDateTime.now());
-        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }
