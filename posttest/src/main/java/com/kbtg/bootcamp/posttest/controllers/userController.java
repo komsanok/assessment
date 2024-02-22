@@ -18,5 +18,10 @@ public class userController {
         return userService.BuyLottery(userId,ticketId);
     }
 
+    @GetMapping("/{userId}/lotteries")
+    public void GetLotteryByUserId(@PathVariable("userId")String userId){
+        userService.GetLotteryByUserId(userId);
+        System.out.println(userId);
+    }
 }
 
