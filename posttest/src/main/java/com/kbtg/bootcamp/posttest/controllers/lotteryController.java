@@ -15,10 +15,4 @@ public class lotteryController {
     public LotteryAllResponseDto getAll() {
         return lotteryService.GetLottery();
     }
-
-//    @PostMapping
-//    public LotteryAddResponseDto AddLottery(@Valid  @RequestBody LotteryAddRequestDto lotteryAddRequestDto){
-//
-//       return  lotteryService.AddLottery(lotteryAddRequestDto);
-//    }
 }
