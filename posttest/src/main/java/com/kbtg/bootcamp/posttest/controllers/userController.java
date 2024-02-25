@@ -16,20 +16,20 @@ public class userController {
     UserService userService;
 
     @PostMapping("/{userId}/lotteries/{ticketId}")
-    public UserBuyLotteryReponseDto BuyLottery(@PathVariable("userId") @NotBlank(message  = "userId is not null") @Size(min = 10, max = 10, message = "userId length equal to 6") String userId,
-                                               @PathVariable("ticketId") @Size(min = 6,max = 6, message = "ticket length equal to 6") @Pattern(regexp = "^\\d{6}$", message = "ticket input numbers") @NotNull(message = "ticket is not null") String ticketId) {
+    public UserBuyLotteryReponseDto BuyLottery(@PathVariable("userId") @NotNull(message  = "userId is not null") @Size(min = 10, max = 10, message = "userId length equal to 10") @Pattern(regexp = "^\\d{10}$", message = "userId input numbers") String userId,
+                                               @PathVariable("ticketId") @NotNull(message  = "ticket is not null") @Size(min = 6,max = 6, message = "ticket length equal to 6") @Pattern(regexp = "^\\d{6}$", message = "ticket input numbers")  String ticketId) {
 
         return userService.BuyLottery(userId, ticketId);
     }
 
     @GetMapping("/{userId}/lotteries")
-    public UserTicketAllReponseDto GetLotteryByUserId(@PathVariable("userId") @NotBlank(message  = "userId is not null") @Size(min = 10, max = 10, message = "userId length equal to 6") String userId) {
+    public UserTicketAllReponseDto GetLotteryByUserId(@PathVariable("userId") @NotNull(message  = "userId is not null") @Size(min = 10, max = 10, message = "userId length equal to 10") @Pattern(regexp = "^\\d{10}$", message = "userId input numbers")  String userId) {
         return userService.GetLotteryByUserId(userId);
     }
 
     @DeleteMapping("/{userId}/lotteries/{ticketId}")
-    public UserDeleteTicketResponseDto DeleteLottery(@PathVariable("userId") @NotBlank(message  = "userId is not null") @Size(min = 10, max = 10, message = "userId length equal to 6") String userId,
-                                                     @PathVariable("ticketId")  @Size(min = 6,max = 6, message = "ticket length equal to 6") @Pattern(regexp = "^\\d{6}$", message = "ticket input numbers") @NotNull(message = "ticket is not null")  String ticketId) {
+    public UserDeleteTicketResponseDto DeleteLottery(@PathVariable("userId") @NotNull(message  = "userId is not null") @Size(min = 10, max = 10, message = "userId length equal to 10") @Pattern(regexp = "^\\d{10}$", message = "userId input numbers") String userId,
+                                                     @PathVariable("ticketId") @NotNull(message  = "ticket is not null") @Size(min = 6,max = 6, message = "ticket length equal to 6") @Pattern(regexp = "^\\d{6}$", message = "ticket input numbers")  String ticketId) {
         return userService.DeleteLottery(userId, ticketId);
     }
 }
